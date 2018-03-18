@@ -22,7 +22,7 @@ def adder(a_number, another_number):
 
     Same as above, but with any two numbers.
     """
-    return a_number, another_number
+    return a_number + another_number
 
 
 
@@ -45,7 +45,7 @@ def really_shout(a_string):
     from above.
     Look up how to 'concatinate' strings to make this happen.
     """
-    return a_string.upper() 
+    return shout(a_string) + "!"
 
 
 def shout_with_a_number(a_string, a_number):
@@ -56,7 +56,7 @@ def shout_with_a_number(a_string, a_number):
 
     HINT: Lookup how to cast a_number to a string or lookup how to use f-strings in python
     """
-    pass
+    return  shout(a_string) + " " + str(a_number)
 
 
 def minitest(f, args, expected):

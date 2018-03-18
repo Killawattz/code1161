@@ -7,7 +7,11 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    pass
+    if a_number %(2):
+        return a_number 
+    else:
+        return a_number == False
+    return a_number
 
 
 def fix_it(moves=True, should_move=True):
@@ -21,17 +25,32 @@ def fix_it(moves=True, should_move=True):
     "Duct Tape"
     "No Problem"
     """
-    pass
+    if moves: 
+        if should_move:
+            return "No Problem"
+        else:
+            return "Duck Tape" 
+    else:
+        if should_move:
+            return "WD-40"
+        else:
+            return "No Problem"
+   
 
 
 def loops_1a():
+    
     """Make 10 stars.
 
     Using a for loop
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    pass
+    star_list = []
+
+    for kurtis in range(10):
+        star_list.append('*')
+    return star_list 
 
 
 
@@ -43,7 +62,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     a string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
-    pass
+    pound_list = [] 
+
+    for kurtis in range(number_of_items):
+        pound_list.append(symbol)
+    return pound_list 
 
 
 def loops_2():
@@ -64,7 +87,13 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    pass
+    big_starfield = [] 
+    for k in range(10):
+        row = []
+        for r in range(10):
+            row.append("*")
+        big_starfield.append(row)
+    return big_starfield
 
 
 def loops_3():
@@ -88,7 +117,13 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    pass
+    return_list = [] 
+    for i in range(10):
+            temp_list = [] 
+            for n in range(10):
+                temp_list.append(str(i))
+            return_list.append(temp_list)
+    return return_list
 
 
 def loops_4():
@@ -108,7 +143,14 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    pass
+    diff_list = []
+    for i in range(10):
+        temp_list = []
+        for n in range(10):
+            temp_list.append(str(n)) 
+        diff_list.append(temp_list)
+    return diff_list
+
 
 
 def loops_5():
@@ -133,7 +175,13 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    pass
+    column = [] 
+    for x in range(10):
+        row = [] 
+        for y in range(5):
+            row.append("(i" + str(x) + ", j" + str(y) + ")")
+        column.append(row)
+    return column 
 
 
 def loops_6():
@@ -156,7 +204,12 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    pass
+    temp_list = []
+    for x in range(10): 
+        temp_list.append([])
+        for n in range(x+1):
+            temp_list[x].append(str(n))
+    return temp_list
 
 
 def loops_7():
@@ -180,7 +233,16 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pass
+    column = [] 
+    for x in range(5): 
+        row = [] 
+        for y in range(9): 
+            if abs(y-4) <= x: 
+                row.append("*")
+            else: 
+                row.append("")
+        column.append(row)
+    return column 
 
 
 def lp(some_kind_of_list, exercise_name):
