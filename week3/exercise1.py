@@ -12,7 +12,14 @@ def loop_ranger(start, stop=None, step=1):
 
     Do this using any method apart from just using range()
     """
-    pass
+
+    
+    list1 = []
+    while start < stop:
+        list1.append(start)
+        start += step
+    return  list1
+
 
 
 def lone_ranger(start, stop, step):
@@ -20,7 +27,7 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    pass
+    return range(start, stop,)
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +36,7 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    pass
+    return list(range(start, stop, 2))
 
 
 def stubborn_asker(low, high):
@@ -38,7 +45,13 @@ def stubborn_asker(low, high):
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
     """
-    pass
+    the_number = int(input('Enter the number: ')) 
+    if low < the_number < high:
+        print("Good Choice!") 
+    else: 
+        stubborn_asker(low, high) 
+
+
 
 
 def not_number_rejector(message):
@@ -48,7 +61,18 @@ def not_number_rejector(message):
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    pass
+    userInput = 0
+    while True:
+        try:
+            userInput = int(input("Enter a Number: "))       
+        except ValueError:
+            print("No that's not a Number!")
+            continue
+        else:
+            print("Yes that's a number!")
+            break 
+
+    
 
 
 def super_asker(low, high):
@@ -57,7 +81,22 @@ def super_asker(low, high):
     Combine stubborn_asker and not_number_rejector to make a function
     that does it all!
     """
-    pass
+
+    userInput = 0
+    while True:
+        try:
+            userInput = int(input("Enter a Number: "))       
+        except ValueError:
+            print("No that's not a Number!")
+            continue
+        else:
+            print("Yes that's a number!")
+            
+        if low < userInput < high:
+            print("That's in the range!")
+        else:
+            super_asker(low,high)
+             
 
 
 if __name__ == "__main__":
