@@ -5,7 +5,12 @@ Steps on the way to making your own guessing game.
 
 
 from exercise1 import not_number_rejector
+
+
 from exercise1 import super_asker
+
+    
+    
 import random
 
 
@@ -22,14 +27,54 @@ def advancedGuessingGame():
     * see if you can find the other failure modes.
       There are three that I can think of. (They are tested for.)
 
+
+
     NOTE: whilst you CAN write this from scratch, and it'd be good for you to
     be able to eventually, it'd be better to take the code from exercise 2 and
     marge it with code from excercise 1.
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-    return "You got it!"
 
+    print("\nwelcome to the guessing game!")
+    print("A number between _ and _ ?")
+
+    while True:
+        try:
+            lowerBound = int(input("Enter a lower bound: "))
+        except ValueError:
+            print("That's not a number") 
+            continue
+        else:
+            pass
+ 
+        try:
+            upperBound = int(input("Enter an upper bound: "))
+        except ValueError:
+            print("That's not a number")
+            continue
+        else:
+             pass     
+    print("OK then, a number between {} and {} ?".format(lowerBound,upperBound))
+    lowerBound = int(lowerBound)
+    upperBound = int(upperBound)
+
+
+    actualNumber = random.randint(lowerBound, upperBound)
+
+    guessed = False
+
+    while not guessed:
+        guessedNumber = int(input("guess a number: ")) 
+        print("you guessed {},".format(guessedNumber),)
+        if guessedNumber == actualNumber:
+            print("you got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("NO! Seriously... TOO SMALL like you XP")
+        else:
+            print("OH MY GOSH!! THATS WAY TOO BIG IDIOT >:|")
+    return "You got it!"
 
 if __name__ == "__main__":
     advancedGuessingGame()
