@@ -108,7 +108,12 @@ def abba(source="abba", guard=3):
             return letter
 
     # write the rest of the function here
-    pass
+        guard = -1
+        if guard > 0: 
+            return letter == letter
+        else: 
+            return letter
+
 
 
 def koch(t, order, size):
@@ -154,7 +159,9 @@ def square_koch(t, order, size):
     trace = ""
     # write the rest of the function here.
     return str(order) + trace
-    pass
+    print("_|-|_") 
+
+    #Honestly have no idea
 
 
 def draw_square(steps=4):

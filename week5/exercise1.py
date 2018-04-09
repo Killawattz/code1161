@@ -19,37 +19,31 @@ you'll need to figure out for yourself what to do.
 # This is a terrible function. The rest of the functions in this file do a
 # much better job of what it's trying to do. Once you've has a little look,
 # move on, and eventually delete this function. (And this comment!)
-def do_bunch_of_bad_things():
-    print("Getting ready to start in 9")
-    print("Getting ready to start in 8")
-    print("Getting ready to start in 7")
-    print("Getting ready to start in 6")
-    print("Getting ready to start in 5")
-    print("Getting ready to start in 4")
-    print("Getting ready to start in 3")
-    print("Getting ready to start in 2")
-    print("Getting ready to start in 1")
-    print("Let's go!")
 
-    triangle = {"base": 3, "height": 4}
-    triangle["hypotenuse"] = triangle["base"]**2 + triangle["height"]**2
-    print("area = " + str((triangle["base"] * triangle["height"])/2))
-    print("side lengths are:")
-    print("base: {}".format(triangle["base"]))
-    print("height: {}".format(triangle["height"]))
-    print("hypotenuse: {}".format(triangle["hypotenuse"]))
-
-    another_hyp = 5**2 + 6**2
-    print(another_hyp)
-
-    yet_another_hyp = 40**2 + 30**2
-    print(yet_another_hyp)
 
 
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    pass
+         
+    countdown_list = []
+    if start > stop:
+        countdown = start 
+        while countdown > stop:
+            countdown = countdown - 1 
+            answer = message + " " +str(countdown) 
+            countdown_list.append(answer) 
+    else:
+        countdown = stop 
+        while countdown > start:
+            countdown = countdown - 1 
+            answer = message + " " + str(countdown)
+            countdown_list.append(answer)
+    countdown_list.append(completion_message)
+
+    return countdown_list
+
+
 
 
 # TRIANGLES
@@ -61,32 +55,45 @@ def countdown(message, start, stop, completion_message):
 # turned off by default but turned on with an optional argument.
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
+
 def calculate_hypotenuse(base, height):
-    pass
+
+    hypotenuse = {3 * 2 + 4 * 2}
+
+    return(hypotenuse)
 
 
 def calculate_area(base, height):
-    pass
+    
+    area = {3 * 4}
+
+    return(area)
 
 
 def calculate_perimeter(base, height):
-    pass
+
+    perimeter = {calculate_hypotenuse + 3 + 4}
+
+    return(perimeter)
 
 
 def calculate_aspect(base, height):
-    pass
+    
+    aspect = {3 / 4}
+    
+    return(aspect)
 
 
 # Make sure you reuse the functions you've already got
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
-    return {"area": None,
-            "perimeter": None,
-            "height": None,
-            "base": None,
-            "hypotenuse": None,
-            "aspect": None,
-            "units": None}
+    return {"area": calculate_area,
+            "perimeter": calculate_perimeter,
+            "height": height,
+            "base": base,
+            "hypotenuse": calculate_hypotenuse,
+            "aspect": calculate_aspect,
+            "units": units}
 
 
 # this should return a multi line string that looks a bit like this:
@@ -136,7 +143,8 @@ def tell_me_about_this_right_triangle(facts_dictionary):
 
     facts = pattern.format(**facts_dictionary)
 
-
+#If anything within this function is returned, it returns all the boolean values as nothing at all, displayed through the "None." This is displayed 
+# through the printed phrase at the end.  
 def triangle_master(base,
                     height,
                     return_diagram=False,
@@ -150,7 +158,11 @@ def triangle_master(base,
     else:
         print("You're an odd one, you don't want anything!")
 
-
+ #Returns a pyramid list of random words collected from the online word generator json, via the URL provided. It is based on on two pyramids stacked 
+ # oppositly using a for-loop starting the first pyramid with the 3 letter word first, stepinp up by 2 ending at the word with 
+ # 21 letters. Then for the second pyramid it begins with the first letter count at 20, and repeating the same process back down 
+ # to 3 letters, decrementing 2. 
+ 
 def wordy_pyramid():
     import requests
     baseURL = "http://api.wordnik.com/v4/words.json/randomWords?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5&minLength={0}&maxLength={0}&limit=1"
@@ -168,13 +180,27 @@ def wordy_pyramid():
     return pyramid_list
 
 
+
+
 def get_a_word_of_length_n(length):
-    pass
+    
+    import requests
+    url = "http://api.wordnik.com/v4/words.json/randomWords?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5&minLength={0}&maxLength={0}&limit=1"
+    r = requests.get(url) 
+    word = r.json()[0]['word']
+    return len(word)
+
+
+
+
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
 
+    import requests
+    url = "http://api.wordnik.com/v4/words.json/randomWords?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5&minLength={0}&maxLength={0}&limit=1" 
+    r = requests.get(url) 
+    word = r.json()[0]['word']
+    return list(map(len, word.split()))
 
-if __name__ == "__main__":
-    do_bunch_of_bad_things()
+    

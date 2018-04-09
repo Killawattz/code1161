@@ -79,20 +79,24 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
     """
+
+
     url = "http://api.wordnik.com/v4/words.json/randomWords?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5&minLength=10&maxLength=10&limit=1" 
    
     pyramid = [] 
     for x in range(3,21,2): 
-        r = requests.get(url) 
-        word = r.text
-        print(word)
-        pyramid.append(word)
-
-    for y in range(21,3,2):
         r = requests.get(url)
-        word = r.text
+        url = url.format(x) 
+        word = r.json()[0]['word']
+        pyramid.append(word)
         print(word)
-        pyrami.append(word) 
+
+    for x in range(20,3,-2):
+        r = requests.get(url)
+        url = url.format(str(x))
+        word = r.json()[0]['word']
+        pyramid.append(word) 
+        print(word)
 
     return pyramid
 
@@ -110,7 +114,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "36b53345d4378993"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
@@ -119,10 +123,11 @@ def wunderground():
     the_json = json.loads(r.text)
     obs = the_json['current_observation']
 
-    return {"state":           None,
-            "latitude":        None,
-            "longitude":       None,
-            "local_tz_offset": None}
+    return {"state":           obs['observation_location']['state'],
+            "latitude":        obs['observation_location']['latitude'],
+            "longitude":       obs['observation_location']['longtitude'],
+            "local_tz_offset": obs['local_tz_offset']
+            }
 
 
 def diarist():
@@ -138,8 +143,11 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    pass
-
+    laser_file = open("lasers.pew", "w+")
+    laser_file.write('6')
+    laser_file.close()
+    #Spent too long working out the simplest script ;(
+        
 
 if __name__ == "__main__":
     functions = [obj for name,obj in inspect.getmembers(sys.modules[__name__]) if (inspect.isfunction(obj))]
@@ -148,5 +156,5 @@ if __name__ == "__main__":
             print(function())
         except Exception as e:
             print(e)
-    if not os.path.isfile("lasers.pew"):
+    if not os.path.isfile("lasers.pew."):
         print('diarist did not create lasers.pew')

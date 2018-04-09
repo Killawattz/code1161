@@ -1,1 +1,3 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+
+This week, was another complete jump up in terms of difficulty, but still built on those key aspects from the weeks prior, overall it was a challenging week, and most of the exercises were completed with success except for the final 2 tasks on exercise 3 which weren't producing the correct outcomes intended, and I wasn't able to get them to work before the submission date, so they remain incomplete.
