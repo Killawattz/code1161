@@ -56,25 +56,26 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 
+import Math
+
 def calculate_hypotenuse(base, height):
 
-    hypotenuse = {3 * 2 + 4 * 2}
+    hypotenuse = math.Sqrt (base** + height **2)
 
     return(hypotenuse)
 
 
 def calculate_area(base, height):
     
-    area = {3 * 4}
+    area = math.(base * height)
 
     return(area)
 
 
 def calculate_perimeter(base, height):
 
-    perimeter = {calculate_hypotenuse + 3 + 4}
+    perimeter = (calculate_hypotenuse + 3 + 4)
 
-    return(perimeter)
 
 
 def calculate_aspect(base, height):
